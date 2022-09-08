@@ -14,6 +14,11 @@ function App() {
         toggleSubscrChecked(!subscrChecked);
     }
 
+    function handleChange(evt) {
+        // setInputValue()
+        console.log('new value', evt.taget.value);
+    }
+
     return (
         <>
             <main>
@@ -29,7 +34,7 @@ function App() {
                                 <input type="text" id="name-field"
                                        name="naam"
                                        value={inputValue}
-                                       onChange={(e) => setInputValue(e.target.value)}
+                                       onChange={handleChange}
                                 />
                             </label>
                             <br/>
