@@ -13,67 +13,74 @@ function App() {
         console.log(`Naam:`, inputValue);
         toggleSubscrChecked(!subscrChecked);
     }
+
     return (
-        <div>
-            <form onSubmit={handleSubmit} className="form-container">
-                <fieldset>
-                    <legend>Gegevens</legend>
-                    <label htmlFor="name-field">
-                        <span> Naam: </span>
-                        <input type="text" id="name-field"
-                               name="naam"
-                               value={inputValue}
-                               onChange={(e) => setInputValue(e.target.value)}
-                        />
-                    </label>
-                    <br/>
-                    <br/>
-                    <label htmlFor="age-field">
-                        <span> Leeftijd: </span>
-                        <input type="number" id="age-field"
-                               name="leeftijd"
-                               value={numberValue}
-                               onChange={(e) => setNumberValue(e.target.value)}
-                        />
+        <>
+            <main>
+                <h1>ORDER FORM</h1>
+            </main>
+            <footer>
+                <div className="form-container">
+                    <form onSubmit={handleSubmit}>
+                        <fieldset>
+                            <legend>Gegevens</legend>
+                            <label htmlFor="name-field">
+                                <span className="span"> Naam : </span>
+                                <input type="text" id="name-field"
+                                       name="naam"
+                                       value={inputValue}
+                                       onChange={(e) => setInputValue(e.target.value)}
+                                />
+                            </label>
+                            <br/>
+                            <br/>
+                            <label htmlFor="age-field">
+                                <span className="span"> Leeftijd: </span>
+                                <input type="number" id="age-field"
+                                       name="leeftijd"
+                                       value={numberValue}
+                                       onChange={(e) => setNumberValue(e.target.value)}
+                                />
 
-                    </label>
-                </fieldset>
-                <br/>
-                <fieldset>
-                    <legend>Jouw review</legend>
-                    <label htmlFor="remark-field">
-                        <span> Opmerkingen: </span>
+                            </label>
+                        </fieldset>
                         <br/>
-                        <textarea
-                                  id="remark-field"
-                                  name="opmerkingen"
-                                  placeholder="Wat vond je van het recept?"
-                                  value={remarkValue}
-                                  onChange={(e) => setRemarkValue(e.target.value)}
-                        />
-                    </label>
-                    <br/>
-                    <label htmlFor="subscribe-field">
-                        <input type="checkbox"
-                               id="subscribe-field"
-                               name="inschrijven"
-                               checked={subscrChecked}
-                               onChange={() => toggleSubscrChecked(!subscrChecked)}
+                        <fieldset>
+                            <legend>Jouw review</legend>
+                            <label htmlFor="remark-field">
+                                <span className="span"> Opmerkingen: </span>
+                                <br/>
+                                <textarea
+                                    id="remark-field"
+                                    name="opmerkingen"
+                                    placeholder="Wat vond je van het recept?"
+                                    value={remarkValue}
+                                    onChange={(e) => setRemarkValue(e.target.value)}
+                                />
+                            </label>
+                            <br/>
+                            <label htmlFor="subscribe-field">
+                                <input type="checkbox"
+                                       id="subscribe-field"
+                                       name="inschrijven"
+                                       checked={subscrChecked}
+                                       onChange={() => toggleSubscrChecked(!subscrChecked)}
 
-                        />
-                        <span> Ik schrijf me in voor de nieuwsbrief </span>
+                                />
+                                <span> Ik schrijf me in voor de nieuwsbrief </span>
 
-                    </label>
-                    <br/>
-                    <br/>
-                    <button type="submit"
-                            disabled={subscrChecked === false}>
-                        Verstuur
-                    </button>
-                </fieldset>
-            </form>
-
-        </div>
+                            </label>
+                            <br/>
+                            <br/>
+                            <button type="submit"
+                                    disabled={subscrChecked === false}>
+                                Verstuur
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
+            </footer>
+        </>
     );
 }
 
