@@ -1,1 +1,26 @@
 /*Schrijf hier jouw css voor jouw formulier*/
+div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 100px;
+}
+
+legend {
+    font-size: large;
+    font-weight: bold;
+}
+span {
+    font-size: medium;
+    font-weight: bold;
+}
+
+textarea {
+    width: 300px;
+    height: 50px;
+}
+
+.form-container {
+    width: 400px;
+
+}
