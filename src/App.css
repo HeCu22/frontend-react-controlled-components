@@ -1,18 +1,52 @@
 /*Schrijf hier jouw css voor jouw formulier*/
-div {
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 100px;
+    background-color:#ceaa75;
 }
 
+footer {
+    display: flex;
+    justify-content: flex-start;
+    background-color:#fbd4c1;
+    padding: 50px;
+    /*height: 400px;*/
+    color: #6e404a;
+}
+
+footer button {
+    background-color: #f7b1a2;
+    font-weight: 600;
+    border: none;
+    padding: 16px 32px;
+    margin: 16px 0;
+    font-size: 20px;
+    color: #6e404a;
+}
+
+footer button:disabled {
+    background-color: #ededed;
+    color: gray;
+}
 legend {
     font-size: large;
     font-weight: bold;
 }
-span {
+
+
+.span {
     font-size: medium;
     font-weight: bold;
+
 }
 
 textarea {
@@ -21,6 +55,8 @@ textarea {
 }
 
 .form-container {
-    width: 400px;
+    width: 350px;
+    background-color: #c7bda1;
+    padding: 10px;
 
 }
