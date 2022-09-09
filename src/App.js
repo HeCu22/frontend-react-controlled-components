@@ -1,31 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
 function App() {
-    // const [inputValue, setInputValue] = React.useState("");
-    // const [numberValue, setNumberValue] = React.useState(0);
-    // const [remarkValue, setRemarkValue] = React.useState("");
-    const [subscrChecked, toggleSubscrChecked] = React.useState(false);
-    const [state, setState] = React.useState({
-        inputValue: "",
-        remarkValue: "",
-        numberValue: 0,
-        subscrChecked: false
+    // initialiseer één state variabele met daarin een object aan form-waardes
+    // let op: de namen van de keys moeten overeenkomen met de name-attributen van de velden
+
+    const [state, setState] = useState({
+        naam: "",
+        leeftijd: "",
+        opmerkingen: "",
+        inschrijven: false,
 
     });
 
     function handleSubmit(e) {
         e.preventDefault();
         console.log(`Het formulier is verstuurd`);
-        console.log(`Naam:`, state.inputValue);
-        toggleSubscrChecked(!state.subscrChecked);
+        console.log(`state:`, state);
+        setState(!state.inschrijven);
+
     }
 
+    // handleChange wordt afgevuurd bij elke verandering en zorgt dan dat het huidige state object wordt gekopieerd
+    // alleen de object key van het bijbehorende inputveld wordt overschreven met een nieuwe waarde
     function handleChange(evt) {
         const value =
             evt.target.type === "checkbox" ? evt.target.checked :  evt.target.value;
+
         setState({...state, [evt.target.name]: value});
-        console.log('new value', evt.target.name, evt.target.value, evt.target.checked);
+        console.log('new value', value, evt.target.name, evt.target.value, evt.target.checked);
+
     }
 
     return (
@@ -42,7 +46,7 @@ function App() {
                                 <span className="span"> Naam : </span>
                                 <input type="text" id="name-field"
                                        name="naam"
-                                       value={state.name}
+                                       value={state.naam}
                                        onChange={handleChange}
                                 />
                             </label>
@@ -52,7 +56,7 @@ function App() {
                                 <span className="span"> Leeftijd: </span>
                                 <input type="number" id="age-field"
                                        name="leeftijd"
-                                       value={state.name}
+                                       value={state.leeftijd}
                                        onChange={handleChange}
                                 />
 
@@ -68,7 +72,7 @@ function App() {
                                     id="remark-field"
                                     name="opmerkingen"
                                     placeholder="Wat vond je van het recept?"
-                                    value={state.name}
+                                    value={state.opmerkingen}
                                     onChange={handleChange}
                                 />
                             </label>
@@ -77,7 +81,7 @@ function App() {
                                 <input type="checkbox"
                                        id="subscribe-field"
                                        name="inschrijven"
-                                       checked={state.name}
+                                       checked={state.inschrijven}
                                        onChange={handleChange}
 
                                 />
@@ -87,7 +91,7 @@ function App() {
                             <br/>
                             <br/>
                             <button type="submit"
-                                    disabled={state.subscrChecked === false}>
+                                    disabled={state.inschrijven === false ? true : false }>
                                 Verstuur
                             </button>
                         </fieldset>
