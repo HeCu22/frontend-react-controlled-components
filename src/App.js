@@ -2,21 +2,30 @@ import React from 'react';
 import './App.css';
 
 function App() {
-    const [inputValue, setInputValue] = React.useState("");
-    const [numberValue, setNumberValue] = React.useState(0);
-    const [remarkValue, setRemarkValue] = React.useState("");
+    // const [inputValue, setInputValue] = React.useState("");
+    // const [numberValue, setNumberValue] = React.useState(0);
+    // const [remarkValue, setRemarkValue] = React.useState("");
     const [subscrChecked, toggleSubscrChecked] = React.useState(false);
+    const [state, setState] = React.useState({
+        inputValue: "",
+        remarkValue: "",
+        numberValue: 0,
+        subscrChecked: false
+
+    });
 
     function handleSubmit(e) {
         e.preventDefault();
         console.log(`Het formulier is verstuurd`);
-        console.log(`Naam:`, inputValue);
-        toggleSubscrChecked(!subscrChecked);
+        console.log(`Naam:`, state.inputValue);
+        toggleSubscrChecked(!state.subscrChecked);
     }
 
     function handleChange(evt) {
-        // setInputValue()
-        console.log('new value', evt.taget.value);
+        const value =
+            evt.target.type === "checkbox" ? evt.target.checked :  evt.target.value;
+        setState({...state, [evt.target.name]: value});
+        console.log('new value', evt.target.name, evt.target.value, evt.target.checked);
     }
 
     return (
@@ -33,7 +42,7 @@ function App() {
                                 <span className="span"> Naam : </span>
                                 <input type="text" id="name-field"
                                        name="naam"
-                                       value={inputValue}
+                                       value={state.name}
                                        onChange={handleChange}
                                 />
                             </label>
@@ -43,8 +52,8 @@ function App() {
                                 <span className="span"> Leeftijd: </span>
                                 <input type="number" id="age-field"
                                        name="leeftijd"
-                                       value={numberValue}
-                                       onChange={(e) => setNumberValue(e.target.value)}
+                                       value={state.name}
+                                       onChange={handleChange}
                                 />
 
                             </label>
@@ -59,8 +68,8 @@ function App() {
                                     id="remark-field"
                                     name="opmerkingen"
                                     placeholder="Wat vond je van het recept?"
-                                    value={remarkValue}
-                                    onChange={(e) => setRemarkValue(e.target.value)}
+                                    value={state.name}
+                                    onChange={handleChange}
                                 />
                             </label>
                             <br/>
@@ -68,8 +77,8 @@ function App() {
                                 <input type="checkbox"
                                        id="subscribe-field"
                                        name="inschrijven"
-                                       checked={subscrChecked}
-                                       onChange={() => toggleSubscrChecked(!subscrChecked)}
+                                       checked={state.name}
+                                       onChange={handleChange}
 
                                 />
                                 <span> Ik schrijf me in voor de nieuwsbrief </span>
@@ -78,7 +87,7 @@ function App() {
                             <br/>
                             <br/>
                             <button type="submit"
-                                    disabled={subscrChecked === false}>
+                                    disabled={state.subscrChecked === false}>
                                 Verstuur
                             </button>
                         </fieldset>
